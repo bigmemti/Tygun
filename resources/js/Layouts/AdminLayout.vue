@@ -2,13 +2,18 @@
 </script>
 <template>
     <div class="dark-layout">
-        <Aside />
-        <main>
+        <div>
             <Nav />
-            <section>
-                <slot></slot>
-            </section>
-        </main>
+            <Aside />
+            <main>
+                <section>
+                    <slot></slot>
+                </section>
+            </main>
+        </div>
+        <ButtonUp>
+
+        </ButtonUp>
     </div>
 </template>
 <style scoped>
