@@ -1,10 +1,11 @@
 <script setup>
+import Nav from '../Components/NavBarComponent.vue'
 </script>
 <template>
     <div class="dark-layout">
         <Aside />
+        <Nav />
         <main>
-            <Nav />
             <section>
                 <slot></slot>
             </section>
@@ -12,8 +13,5 @@
     </div>
 </template>
 <style scoped>
-    .dark-layout {
-        background-color: #161d31;
-        height: 100vh;
-    }
+
 </style>
