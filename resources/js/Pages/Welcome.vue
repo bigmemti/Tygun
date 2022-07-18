@@ -11,7 +11,7 @@ import Layout from '../Layouts/AdminLayout.vue';
 
 <template>
     <Layout>
-
+        {{}}
     </Layout>
 </template>
 

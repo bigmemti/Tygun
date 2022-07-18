@@ -15,8 +15,12 @@
     @apply w-full m-0;
 }
 
-.main_container .top_nav{
+.nav-md .body  .main_container .top_nav{
     @apply block  lg:ml-[230px];
+}
+
+.nav-md .body .main_container{
+   @apply lg:grid lg:grid-cols-[calc(100%-230px)_230px];
 }
 
 .nav_menu{
@@ -69,3 +73,232 @@ a:not([href]):not([tabindex]){
 .user-profile img{
     @apply w-[29px] h-[29px] rounded-[50%] mr-2;
 }
+
+.nav-md .body .col-md-3.left_col{
+   @apply  hidden min-h-full w-[230px] p-0 absolute lg:flex z-[1] md:max-w-[25%];
+}
+
+.left_col{
+    @apply bg-[#2A3F54];
+}
+
+.navbar{
+    @apply mb-0 relative flex flex-wrap items-center content-between;
+}
+
+.nav_title{
+    @apply w-[230px] p-0 h-[57px];
+}
+
+.site_title{
+    @apply text-ellipsis overflow-hidden font-normal
+    text-[22px] w-full !text-[#ECF0F1] !mr-0 leading-[59px]
+    flex h-[55px] m-0 pr-2 items-center justify-center gap-x-2;
+}
+
+.clearfix{
+    @apply after:content-["*"] after:block after:h-0 after:clear-both after:invisible;
+}
+
+.profile{
+    @apply flex items-center justify-around
+}
+
+.profile_pic{
+    @apply w-2/6
+}
+
+.img-circle.profile_img{
+    @apply w-9/12 bg-white mr-[15%] z-[1000] border border-[rgba(52,73,94,0.44)] p-1;
+}
+
+.img-circle{
+    @apply rounded-[50%]
+}
+
+img{
+    @apply align-middle
+}
+
+.profile_info{
+    @apply px-[10px] pb-[10px] pt-[25px]
+}
+
+.profile_info span{
+    @apply text-[13px] leading-[30px] text-[#BAB8B8]
+}
+
+.profile_info h2{
+    @apply text-[14px] text-[#ECF0F1] m-0 font-light ;
+}
+
+.main_menu_side{
+    @apply p-0;
+}
+
+.menu_section{
+    @apply mb-[35px];
+}
+
+.menu_section h3{
+    text-shadow: 1px 1px #000;
+    @apply pr-[23px] text-white font-bold text-xs my-0
+}
+
+.menu_section > ul{
+    @apply mt-3 block;
+}
+
+.nav.side-menu > li.current-page,
+.nav.side-menu > li.active{
+    border-left: 5px solid #1ABB9C;
+}
+
+.nav.side-menu > li{
+    @apply relative block cursor-pointer;
+}
+
+.nav.side-menu > li.active > a{
+    text-shadow: rgba(0,0,0,0.25) 0 -1px 0;
+    background: -webkit-gradient(linear, left top, left bottom, from(#334556), to(#2C4257)),#2A3F54;
+    background: linear-gradient(#334556, #2C4257),#2A3F54;
+    -webkit-box-shadow: rgba(0,0,0,0.25) 0 1px 0,inset rgba(255,255,255,0.16) 0 1px 0;
+    box-shadow: rgba(0,0,0,0.25) 0 1px 0,inset rgba(255,255,255,0.16) 0 1px 0;
+}
+
+.nav.side-menu > li > a,
+.nav.child_menu > li > a{
+    @apply text-[#E7E7E7] font-medium;
+}
+
+.nav.side-menu > li > a{
+    @apply mb-2;
+}
+
+.nav > li > a{
+    @apply relative flex justify-between px-[15px] pt-[13px] pb-[12px];
+}
+
+.nav.child_menu{
+
+    @apply block;
+}
+
+.nav li.current-page{
+    background: rgba(255,255,255,0.05);
+}
+
+.nav.child_menu li{
+    @apply pr-[36px]
+}
+
+.nav > li{
+    @apply relative block;
+}
+
+.nav-md ul.nav.child_menu li::before{
+    background: #425668;
+    bottom: auto;
+    content: "";
+    height: 8px;
+    left: auto;
+    margin-top: 13px;
+    position: absolute;
+    right: 23px;
+    width: 8px;
+    z-index: 1;
+    border-radius: 50%;
+}
+
+.nav li li.current-page a{
+    @apply text-white;
+}
+
+.nav.child_menu > li > a{
+    color: rgba(255,255,255,0.75);
+    font-size: 12px;
+    padding: 9px;
+}
+
+.nav-md ul.nav.child_menu li::after {
+    border-right: 1px solid #425668;
+    bottom: 0;
+    content: "";
+    right: 27px;
+    position: absolute;
+    top: 0;
+}
+
+.nav-md .body .right_col{
+    @apply px-[20] pt-[10] pb-0 lg:mr-[230px]
+}
+
+.nav-sm .body .main_container{
+    @apply grid grid-cols-[calc(100%-70px)_70px];
+}
+
+.nav-sm .body .col-md-3.left_col{
+    @apply min-h-full w-[70px] p-0 z-[9999] absolute;
+}
+
+.nav-sm .navbar.nav_title{
+    @apply w-[70px];
+}
+
+.nav-sm .profile{
+    @apply hidden;
+}
+
+.nav-sm .navbar.nav_title a span{
+    @apply hidden;
+}
+
+.nav-sm .menu_section{
+    @apply m-0;
+}
+
+.nav-sm span.fa, .nav-sm .menu_section h3{
+    @apply hidden;
+}
+
+.nav-sm .nav.side-menu li a{
+    @apply text-center font-normal text-xs py-3 px-1 block;
+}
+
+.nav-sm ul.nav.child_menu{
+    @apply absolute right-[100%] top-0 w-[210px] z-[4000] bg-[#3E5367]
+}
+
+.nav-sm .nav.side-menu li a div svg{
+    @apply text-2xl text-center w-full mb-2
+}
+
+.nav-sm .nav.side-menu li a > svg, .nav-sm .menu_section h3{
+    @apply hidden;
+}
+
+.nav-sm .nav.side-menu li a div{
+    @apply flex-col justify-center items-center
+}
+
+.nav-sm ul.nav.child_menu li{
+    @apply py-0 px-[10px] ;
+}
+
+.nav-sm ul.nav.child_menu li a{
+    @apply text-right;
+}
+
+.nav-sm .main_container .top_nav{
+    @apply block  z-[2] w-full
+}
+
+
+.nav-sm .body .right_col{
+    @apply mr-[70px] p-0 w-full
+}
+
+.nav-sm ul.nav.child_menu li {
+    padding: 0 10px;
+}
+

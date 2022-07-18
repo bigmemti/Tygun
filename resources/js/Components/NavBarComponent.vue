@@ -3,12 +3,14 @@ import {faBars , faCaretDown, faSignOut} from '@fortawesome/free-solid-svg-icons
 import {ref} from 'vue'
 
 let user_menu_show = ref(false);
+
+defineEmits(['changeBar'])
 </script>
 <template>
     <div class="top_nav">
         <div class="nav_menu">
             <div class="nav toggle">
-                <a id="menu_toggle">
+                <a id="menu_toggle" @click="$emit('changeBar')">
                     <Fa :icon="faBars" size="2.5x"/>
                 </a>
             </div>
