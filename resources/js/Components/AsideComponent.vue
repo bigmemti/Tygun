@@ -1,8 +1,9 @@
 <script setup>
-import {faClipboardCheck,faHome,faChevronDown} from '@fortawesome/free-solid-svg-icons'
+import {faClipboardCheck,faChevronDown} from '@fortawesome/free-solid-svg-icons'
 import {ref} from 'vue'
 import SlideUpDown from './SlideUpDownComponent.vue'
 import {right_bar} from '../Store/lists'
+import { Link } from '@inertiajs/inertia-vue3';
 
 let isDropped = ref(false);
 
@@ -23,11 +24,11 @@ const active = (index) => {
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img :src="$page.props.auth.user.profile ? $page.props.auth.user.profile : 'images/avatar.webp'" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span> خوش آمدید،</span>
-                <h2> علی </h2>
+                <h2> {{$page.props.auth.user.username}} </h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -49,8 +50,8 @@ const active = (index) => {
                             </a>
                         <SlideUpDown>
                             <ul class="nav child_menu" v-show="right_bar.dropped == index">
-                                <li v-for="anchor in item.list">
-                                    <a :href="anchor.route">{{anchor.name}}</a>
+                                <li v-for="anchor in item.list" :class="{ 'current-page': route().current() === anchor.route }">
+                                    <Link :href="route(anchor.route)" >{{anchor.name}}</Link>
                                 </li>
                             </ul>
                         </SlideUpDown>

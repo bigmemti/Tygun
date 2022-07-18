@@ -1,4 +1,4 @@
-import {faHome,faAnkh} from '@fortawesome/free-solid-svg-icons';
+import {faHome} from '@fortawesome/free-solid-svg-icons';
 import {reactive} from 'vue';
 
 export const right_bar = reactive({
@@ -10,9 +10,13 @@ export const right_bar = reactive({
             title : 'خانه',
             list : [
                 {
-                    route : route('dashboard'),
+                    route : 'dashboard',
                     name : 'داشبورد'
-                }
+                },
+                {
+                    route : 'login',
+                    name : 'ورود'
+                },
             ]
         }
     ]

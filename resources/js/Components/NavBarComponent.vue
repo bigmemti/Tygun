@@ -1,6 +1,8 @@
 <script setup>
 import {faBars , faCaretDown, faSignOut} from '@fortawesome/free-solid-svg-icons';
-import {ref} from 'vue'
+import {ref} from 'vue';
+import { Link } from '@inertiajs/inertia-vue3';
+
 
 let user_menu_show = ref(false);
 
@@ -18,10 +20,12 @@ defineEmits(['changeBar'])
                 <ul class=" navbar-right">
                     <li class="nav-item dropdown open" style="padding-left: 15px;">
                         <a @click="user_menu_show = !user_menu_show" class="user-profile dropdown-toggle" >
-                            <img src="images/img.jpg" alt=""> &nbsp; علی &nbsp;<Fa  :icon="faCaretDown" />
+                            <img :src="$page.props.auth.user.profile ? $page.props.auth.user.profile : 'images/avatar.webp'" alt=""> &nbsp; {{$page.props.auth.user.username}} &nbsp;<Fa  :icon="faCaretDown" />
                         </a>
                         <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown" v-if="user_menu_show">
-                            <a class="dropdown-item mb-2"  href="login.html"> <Fa :icon="faSignOut"/>&nbsp; خروج</a>
+                            <Link class="dropdown-item mb-2" :href="route('logout')" method="post">
+                                <Fa :icon="faSignOut"/>&nbsp; خروج
+                            </Link>
                         </div>
                     </li>
                 </ul>
