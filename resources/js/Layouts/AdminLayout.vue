@@ -15,7 +15,9 @@ let isMd = ref(true);
                     <Nav  @changeBar="isMd = ! isMd"/>
                     <main>
                         <section>
-                            <slot></slot>
+                            <div class="container mx-auto">
+                                <slot></slot>
+                            </div>
                         </section>
                     </main>
                 </div>

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Team;
+use Inertia\Inertia;
+use App\Http\Resources\TeamResource;
 use App\Http\Requests\StoreTeamRequest;
 use App\Http\Requests\UpdateTeamRequest;
+use App\Http\Resources\TeamIndexResource;
 
 class TeamController extends Controller
 {
@@ -15,7 +18,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Team/Index', ['teams' => TeamIndexResource::collection(Team::all())]);
     }
 
     /**
@@ -25,7 +28,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Team/Create');
     }
 
     /**
@@ -36,7 +39,11 @@ class TeamController extends Controller
      */
     public function store(StoreTeamRequest $request)
     {
-        //
+        Team::create([
+            'name' => $request->name,
+            'uuid' => str()->uuid()->toString()
+        ]);
+        return to_route('dashboard.team.index')->with('success', __('Team created successfully.'));
     }
 
     /**
@@ -47,7 +54,7 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        //
+        return Inertia::render('Team/Show', ['team' => new TeamResource($team)]);
     }
 
     /**
@@ -58,7 +65,7 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        //
+        return Inertia::render('Team/Edit', ['team' => new TeamResource($team)]);
     }
 
     /**
@@ -70,7 +77,8 @@ class TeamController extends Controller
      */
     public function update(UpdateTeamRequest $request, Team $team)
     {
-        //
+        $team->update($request->validated());
+        return to_route('dashboard.team.index')->with('success', __('Team updated successfully.'));
     }
 
     /**
@@ -81,6 +89,7 @@ class TeamController extends Controller
      */
     public function destroy(Team $team)
     {
-        //
+        $team->delete();
+        return to_route('dashboard.team.index')->with('success', __('Team deleted successfully.'));
     }
 }

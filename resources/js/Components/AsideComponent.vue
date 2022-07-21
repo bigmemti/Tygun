@@ -24,7 +24,7 @@ const active = (index) => {
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img :src="$page.props.auth.user.profile ? $page.props.auth.user.profile : 'images/avatar.webp'" alt="..." class="img-circle profile_img">
+                <img :src="$page.props.auth.user.profile ? $page.props.auth.user.profile : route('home') + '/images/avatar.webp'" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span> خوش آمدید،</span>

@@ -22,6 +22,8 @@
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^6.1.1",
         "@fortawesome/free-solid-svg-icons": "^6.1.1",
-        "vue-fa": "^4.0.1"
+        "@sweetalert2/theme-dark": "^5.0.11",
+        "vue-fa": "^4.0.1",
+        "vue-sweetalert2": "^5.0.5"
     }
 }

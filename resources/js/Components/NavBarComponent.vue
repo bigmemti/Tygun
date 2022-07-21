@@ -20,7 +20,7 @@ defineEmits(['changeBar'])
                 <ul class=" navbar-right">
                     <li class="nav-item dropdown open" style="padding-left: 15px;">
                         <a @click="user_menu_show = !user_menu_show" class="user-profile dropdown-toggle" >
-                            <img :src="$page.props.auth.user.profile ? $page.props.auth.user.profile : 'images/avatar.webp'" alt=""> &nbsp; {{$page.props.auth.user.username}} &nbsp;<Fa  :icon="faCaretDown" />
+                            <img :src="$page.props.auth.user.profile ? $page.props.auth.user.profile : route('home') + '/images/avatar.webp'" alt=""> &nbsp; {{$page.props.auth.user.username}} &nbsp;<Fa  :icon="faCaretDown" />
                         </a>
                         <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown" v-if="user_menu_show">
                             <Link class="dropdown-item mb-2" :href="route('logout')" method="post">
