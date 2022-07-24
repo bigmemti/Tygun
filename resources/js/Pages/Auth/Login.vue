@@ -1,6 +1,8 @@
 <script setup>
 import BreezeCheckbox from '@/Components/Checkbox.vue';
-import { useForm } from '@inertiajs/inertia-vue3';
+import {Link, useForm } from '@inertiajs/inertia-vue3';
+import {faPencil} from '@fortawesome/free-solid-svg-icons';
+import { ref } from 'vue';
 
 defineProps({
     canResetPassword: Boolean,
@@ -13,6 +15,8 @@ const form = useForm({
     remember: false
 });
 
+let active = ref(false);
+
 const submit = () => {
     form.post(route('login'), {
         onFinish: () => form.reset('password'),
@@ -22,7 +26,7 @@ const submit = () => {
 </script>
 
 <template>
-<div class="container">
+<div class="container" :class="{'active' : active}">
   <div class="card"></div>
   <div class="card">
     <h1 class="title">ورود</h1>
@@ -51,6 +55,11 @@ const submit = () => {
         </div>
         <div class="footer"><a href="#">فراموشی رمز عبور</a></div>
     </form>
+  </div>
+  <div class="card alt">
+    <Link :href="route('register')" class="toggle" @click="active = true">
+        <Fa :icon="faPencil"/>
+    </Link>
   </div>
 </div>
 </template>
@@ -85,7 +94,7 @@ body {
   right: 0;
   width: 100%;
   min-width: 100%;
-  height: auto;
+    height: 600px;
   border-radius: 5px;
   padding: 60px 0 40px;
   overflow: hidden;
@@ -98,8 +107,8 @@ body {
   transform: scale(10);
   transition: transform 0.3s ease;
 }
-.container.active .card.alt .toggle:before {
-  content: "";
+.container.active .card.alt .toggle svg {
+  display: none;
 }
 .container.active .card.alt .title,
 .container.active .card.alt .input-container,
@@ -310,6 +319,7 @@ body {
 }
 .card.alt .toggle {
   position: relative;
+  right : 460px;
   background: #ed2553;
   width: 140px;
   height: 140px;
@@ -320,17 +330,17 @@ body {
   line-height: 140px;
   text-align: center;
   cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
-.card.alt .toggle:before {
-  content: "";
+.card.alt .toggle svg {
   display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transform: translate(0, 0);
-  margin-top: 38px;
 }
 .card.alt .title,
 .card.alt .input-container,
